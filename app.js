@@ -1,11 +1,11 @@
 "use strict";
 
 const RESULTS = {
-  side_quest: { category: "SIDE QUEST", title: "SOMETHING NEW IS CALLING.", description: "Not everything needs a master plan. There may be something worth exploring just beyond your usual routine." },
-  main_character: { category: "MAIN CHARACTER", title: "TAKE THE MOMENT.", description: "This could be your moment to step forward, make the decision or give yourself credit for how far you've come." },
-  plot_twist: { category: "PLOT TWIST", title: "EXPECT THE UNEXPECTED.", description: "The story might be heading somewhere you didn't plan. Take a moment to look at the possibilities." },
-  character_development: { category: "CHARACTER DEVELOPMENT", title: "THIS COUNTS AS GROWING.", description: "Progress doesn't always look dramatic. Sometimes the most important change is the one you make quietly." },
-  intermission: { category: "INTERMISSION", title: "LET'S GET A LITTLE MORE CONTEXT.", description: "This one doesn't quite fit yet. Give us a little more detail and we'll try again." },
+  side_quest: { number: "01", category: "EXPLORER", title: "THERE'S MORE THAN ONE WAY FORWARD.", interpretation: "Your situation has an opening in it: a question, possibility or small experiment worth following.", read: "Unexpected situations can reveal options worth exploring.", action: "Choose one low-stakes experiment you can try this week.", signature: "You don't need the whole map to take the first step." },
+  main_character: { number: "02", category: "PROTAGONIST", title: "MAKE YOUR NEXT MOVE COUNT.", interpretation: "You have more influence here than the uncertainty is letting you feel. The next useful move is yours to make.", read: "Focus on what you can influence instead of waiting for perfect conditions.", action: "Name the decision you can make today, then take the first deliberate step.", signature: "You can be nervous and still make the move." },
+  plot_twist: { number: "03", category: "PLOT TWISTER", title: "WHAT IF THE STORY CHANGES HERE?", interpretation: "The obvious reading may not be the only one. There is room to reframe what just happened and find a less expected route.", read: "The first interpretation of a situation is not always the only interpretation.", action: "Challenge one assumption and write down one alternative explanation.", signature: "Maybe the unexpected part is where things get interesting." },
+  character_development: { number: "04", category: "QUIET EVOLVER", title: "PROGRESS HAS ITS OWN PACE.", interpretation: "This looks like a moment for steady change rather than a dramatic fix. Small movement still moves the story.", read: "Not every situation needs an immediate dramatic solution.", action: "Take one manageable step, or deliberately pause and reflect before choosing one.", signature: "Not every breakthrough makes a sound." },
+  intermission: { number: "—", category: "INTERMISSION", title: "LET'S GET A LITTLE MORE CONTEXT.", interpretation: "This one is still too open to call. A little more detail will give the moment a clearer shape.", read: "Some decisions need a pause before they need a label.", action: "Add one concrete detail: what happened, what you want, or what feels stuck.", signature: "The next clue is probably closer than it feels." },
 };
 const ORDER = Object.keys(RESULTS);
 const $ = (id) => document.getElementById(id);
@@ -27,8 +27,13 @@ function renderOutcome(key, confidence) {
   const item = RESULTS[key];
   resultCard.dataset.outcome = key;
   $("resultCategory").textContent = item.category;
+  $("resultNumber").textContent = item.number;
   $("resultTitle").textContent = item.title;
-  $("resultDescription").textContent = item.description;
+  $("resultDescription").textContent = item.interpretation;
+  $("resultRead").textContent = item.read;
+  $("resultAction").textContent = item.action;
+  $("resultSignature").textContent = `“${item.signature}”`;
+  $("sharedText").textContent = situation.value;
   $("confidenceValue").textContent = percent(confidence);
   $("confidenceBar").style.setProperty("--confidence", `${Math.round(confidence * 100)}%`);
   $("resultKicker").textContent = key === "intermission" ? "A MOMENT BETWEEN" : "YOUR OUTCOME";
