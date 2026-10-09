@@ -1,0 +1,11 @@
+{
+  "name": "chaos-button",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "CHAOS BUTTON — a neo-brutalist AI decision toy powered by typesafe-ai/jev",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  }
+}

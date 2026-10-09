@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f4f1eb" />
+  <meta name="description" content="Tell us what's on your mind. See what comes back." />
+  <title>CHAOS BUTTON — A little turn of fate</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <div class="ambient ambient-one" aria-hidden="true"></div><div class="ambient ambient-two" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="wordmark" href="/" aria-label="CHAOS BUTTON home">CHAOS <span>BUTTON</span></a>
+    <span class="tagline">A LITTLE TURN OF FATE</span>
+    <div class="status" aria-label="Decision status"><span id="statusDot" class="status-dot"></span><span id="statusText" aria-live="polite">READY WHEN YOU ARE</span></div>
+  </header>
+  <main class="page-shell">
+    <section class="hero" aria-labelledby="headline">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="eyebrow-rule"></span> A SMALL EXPERIMENT IN LETTING GO</p>
+        <h1 id="headline">SOME THINGS<br />ARE BETTER<br /><span>LEFT TO FATE.</span></h1>
+        <p class="lede">Tell us what's on your mind. <em>See what comes back.</em></p>
+      </div>
+      <div class="hero-art" aria-hidden="true"><div class="orbit orbit-a"></div><div class="orbit orbit-b"></div><span class="orbit-dot"></span><span class="art-index">NO. 01<br />EST. TODAY</span><span class="art-cross">✳</span></div>
+    </section>
+
+    <section class="input-panel glass" aria-labelledby="inputHeading">
+      <div class="panel-heading"><label id="inputHeading" for="situation">YOUR CURRENT SITUATION</label><span class="field-note">A FEW WORDS WILL DO</span></div>
+      <form id="decisionForm" novalidate>
+        <textarea id="situation" name="text" rows="3" maxlength="500" placeholder="I've been putting off something important..." aria-describedby="charCount formError"></textarea>
+        <div class="input-meta"><span id="charCount" class="counter" aria-live="polite"><span id="currentCount">0</span> / 500</span><span id="formError" class="form-error" role="alert" hidden></span></div>
+        <div class="submit-row"><button id="submitButton" class="reveal-button" type="submit"><span>REVEAL MY RESULT</span><span class="arrow" aria-hidden="true">↗</span></button><p class="privacy-note">ONE MOMENT. ONE OUTCOME.</p></div>
+      </form>
+      <div id="loadingState" class="loading-state" role="status" hidden><span class="loader" aria-hidden="true"></span><span>Finding your outcome...</span></div>
+    </section>
+
+    <section id="result" class="result-section" aria-live="polite" aria-atomic="true" hidden>
+      <div class="result-topline"><span id="resultKicker" class="eyebrow">YOUR OUTCOME</span><span class="result-index">A NOTE FROM THE UNKNOWN&nbsp; / &nbsp;01</span></div>
+      <article id="resultCard" class="result-card glass" data-outcome="side_quest">
+        <div class="result-visual" aria-hidden="true"><span class="visual-orbit"></span><span class="visual-orbit orbit-inner"></span><span class="visual-star">✳</span><span class="visual-block"></span></div>
+        <div class="result-copy"><p id="resultCategory" class="category-label">SIDE QUEST</p><h2 id="resultTitle">SOMETHING NEW IS CALLING.</h2><p id="resultDescription" class="result-description"></p>
+          <div class="confidence"><div class="confidence-top"><span>MODEL CONFIDENCE</span><strong id="confidenceValue">—</strong></div><div class="confidence-track"><span id="confidenceBar"></span></div><p class="confidence-note">A playful read of the moment, not a prediction.</p></div>
+        </div>
+      </article>
+      <div id="uncertainBlock" class="choice-panel glass" hidden><p id="uncertainSummary"></p><div id="uncertainChoices" class="choice-list"></div></div>
+      <div id="manualBlock" class="choice-panel glass" hidden><p>Pick the outcome that feels closest.</p><div id="manualChoices" class="choice-list"></div></div>
+      <div class="result-actions"><button id="againButton" class="text-button" type="button">TRY AGAIN <span aria-hidden="true">↗</span></button><button id="editButton" class="edit-button" type="button">EDIT YOUR SITUATION</button></div>
+    </section>
+    <footer class="page-footer"><span>FIVE POSSIBLE TURNS</span><span class="footer-line"></span><span>NO WRONG ANSWERS</span><span class="footer-mark">✳</span></footer>
+  </main>
+</body>
+</html>
